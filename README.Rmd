@@ -1,0 +1,45 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# peptools
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of peptools is to ...
+
+## Installation
+
+You can install the development version of peptools from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("immunomicslab/peptools")
+```
+
+## Example
+
+- First we load the library
+
+```{r libload}
+library(peptools)
+```
+
+- Then, we can use `pep_ran()` to generate 10 random 9-mers
+
+```{r}
+pep_ran(n = 10, k = 9)
+```
+
