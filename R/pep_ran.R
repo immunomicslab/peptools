@@ -1,3 +1,16 @@
+#' Generate Random Peptides
+#'
+#' This function generates random peptides by sampling amino acid residues.
+#'
+#' @param n Number of peptides to generate.
+#' @param k Length of each peptide.
+#'
+#' @return A character vector containing the generated random peptides.
+#' @export
+#'
+#' @examples
+#' pep_ran(n = 10, k = 5)
+#'
 pep_ran = function(n, k){
 
   # Define the standard 20 amino acid residue characters
