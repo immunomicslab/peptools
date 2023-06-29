@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of peptools is to …
+This is a work in progress…!
 
 ## Installation
 
@@ -30,6 +30,6 @@ library(peptools)
 
 ``` r
 pep_ran(n = 10, k = 9)
-#>  [1] "NMLMTQSID" "ISCTESWMV" "WRFPFGVLV" "CIMIPALVW" "LNESMRCDR" "PKMMCHWIC"
-#>  [7] "IHDINDLGS" "EDHWKMNVY" "CGMYVFYVR" "SLHDEAAGI"
+#>  [1] "KQKWIMLEL" "SRNSPYEPN" "VILWCRKMI" "MPDKDFSMR" "NEHGIICPY" "HACIHVFNY"
+#>  [7] "CSEAPQFID" "MKQCACWFL" "LMPEMWNNK" "KYNLFRNTY"
 ```

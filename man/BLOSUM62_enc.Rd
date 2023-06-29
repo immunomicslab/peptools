@@ -3,9 +3,9 @@
 \docType{data}
 \name{BLOSUM62_enc}
 \alias{BLOSUM62_enc}
-\title{The BLOSUM62 matrix}
+\title{The BLOSUM62 encoding matrix}
 \format{
-A data frame with with 20 rows and 20 columns
+A data frame with with 21 rows and 21 columns
 }
 \source{
 \url{ftp://ftp.ncbi.nih.gov/blast/matrices/BLOSUM62}
@@ -16,22 +16,5 @@ BLOSUM62_enc
 \description{
 The BLOSUM62 matrix transformed for encoding by dividing by 5. Furthermore,
 row and column zero vectors representing 'X' has been added.
-}
-\details{
-The BLock SUbstition matrix for sequences with less than 62\\% similarity.
-The matrix has been subset to the 20 proteogenic amino acids
-
-Matrix made by matblas from blosum62.iij
-\itemize{
-\item column uses minimum score
-}
-
-BLOSUM Clustered Scoring Matrix in 1/2 Bit Units
-
-Blocks Database = /data/blocks_5.0/blocks.dat
-
-Cluster Percentage: >= 62
-
-Entropy =   0.6979, Expected =  -0.5209
 }
 \keyword{datasets}

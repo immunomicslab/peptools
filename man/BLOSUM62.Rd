@@ -8,7 +8,7 @@
 A data frame with with 20 rows and 20 columns
 }
 \source{
-\url{ftp://ftp.ncbi.nih.gov/blast/matrices/BLOSUM62}
+\url{https://ftp.ncbi.nih.gov/blast/matrices/BLOSUM62}
 }
 \usage{
 BLOSUM62

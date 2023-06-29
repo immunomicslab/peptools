@@ -5,14 +5,11 @@
 \alias{BGFREQS}
 \title{Amino Acid Residue Background Frequencies}
 \format{
-A data frame with 5 rows and 20 columns:
-\describe{
-\item{name}{One-letter symbol for each of the 20 standard proteogenic amino acids}
-\item{Kingdom}{Viruses, Archaea, Bacteria, Eukaryota and All}
-}
+A data frame with 5 rows and 21 columns, where rows pertain to Kingdom
+and columns to amino acids
 }
 \source{
-\url{http://isoelectricpointdb.org/statistics.html}
+\url{https://isoelectricpointdb2.mimuw.edu.pl/statistics.html#aa_stats}
 }
 \usage{
 BGFREQS
@@ -24,9 +21,8 @@ pre-computed isoelectric points for proteomes from different model organisms.
 }
 \details{
 Reference paper:
-Proteome-pI: proteome isoelectric point database
-Lukasz P. Kozlowski
-Nucleic Acids Research, Volume 45, Issue D1, 4 January 2017, Pages D1112–
-D1116, https://doi.org/10.1093/nar/gkw978
+Kozlowski LP. Proteome-pI 2.0: proteome isoelectric point database
+update. Nucleic Acids Res. 2022 Jan 7;50(D1):D1535-D1540. doi:
+10.1093/nar/gkab944. PMID: 34718696; PMCID: PMC8728302.
 }
 \keyword{datasets}
