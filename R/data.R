@@ -29,11 +29,14 @@
 "AMINOACIDS"
 
 
-#' 5,000 9-mer peptides
+#' An allele data set of random 9-mer peptides
 #'
-#' 5,000 9-mer peptides predicted to be strong binders to HLA-A*02:01 by netMHCpan-4.0
+#' Each peptide has been in silico analysed for binding to six alleles:
+#' \code{HLA-A01:01}, \code{HLA-A02:01}, \code{HLA-A03:01},
+#' \code{HLA-B07:02}, \code{HLA-B08:01}, \code{HLA-B27:05}. Analysis was
+#' performed using netMHCpan4.1b.
 #'
-#' @format A character vector with 5,000 strings of length 9
+#' @format A data frame with 132,091 rows and 6 columns
 "PEPTIDES"
 
 
@@ -104,7 +107,33 @@
 #' The BLOSUM62 encoding pca matrix
 #'
 #' The BLOSUM62 matrix transformed for encoding by performing a PCA
-#' and then using n number of PCs for encoding
+#' and then using n number of PCs for encoding. Below table show the
+#' cumulative explained variation, such that, e.g. incl. 10 PCs, will
+#' correspond to 96.1% EV.
+#'
+#' @details
+#'  | PC | Cumulative EV |
+#'  |----------|----------|
+#'  | 1 | 0.392 |
+#'  | 2 | 0.586 |
+#'  | 3 | 0.692 |
+#'  | 4 | 0.756 |
+#'  | 5 | 0.812 |
+#'  | 6 | 0.858 |
+#'  | 7 | 0.896 |
+#'  | 8 | 0.924 |
+#'  | 9 | 0.945 |
+#'  | 10 | 0.961 |
+#'  | 11 | 0.975 |
+#'  | 12 | 0.983 |
+#'  | 13 | 0.988 |
+#'  | 14 | 0.992 |
+#'  | 15 | 0.995 |
+#'  | 16 | 0.997 |
+#'  | 17 | 0.999 |
+#'  | 18 | 1 |
+#'  | 19 | 1 |
+#'  | 20 | 1 |
 #'
 #' @format A data frame with with 21 rows and 20 columns
 #' @source \url{ftp://ftp.ncbi.nih.gov/blast/matrices/BLOSUM62}
@@ -114,8 +143,33 @@
 #' The BLOSUM50 encoding pca matrix
 #'
 #' The BLOSUM50 matrix transformed for encoding by performing a PCA
-#' and then using n number of PCs for encoding
+#' and then using n number of PCs for encoding. Below table show the
+#' cumulative explained variation, such that, e.g. incl. 10 PCs, will
+#' correspond to 96% EV.
 #'
+#' @details
+#'  | PC | Cumulative EV |
+#'  |----------|----------|
+#'  | 1 | 0.375 |
+#'  | 2 | 0.565 |
+#'  | 3 | 0.661 |
+#'  | 4 | 0.744 |
+#'  | 5 | 0.802 |
+#'  | 6 | 0.852 |
+#'  | 7 | 0.89 |
+#'  | 8 | 0.918 |
+#'  | 9 | 0.945 |
+#'  | 10 | 0.96 |
+#'  | 11 | 0.973 |
+#'  | 12 | 0.981 |
+#'  | 13 | 0.987 |
+#'  | 14 | 0.991 |
+#'  | 15 | 0.995 |
+#'  | 16 | 0.997 |
+#'  | 17 | 0.999 |
+#'  | 18 | 1 |
+#'  | 19 | 1 |
+#'  | 20 | 1 |
 #' @format A data frame with with 21 rows and 20 columns
 #' @source \url{ftp://ftp.ncbi.nih.gov/blast/matrices/BLOSUM50}
 "BLOSUM50_pca"

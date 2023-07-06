@@ -14,8 +14,16 @@
 #' (tensor).
 #'
 #' @param x A character vector of peptides to be encoded
-#' @param mat An encoding matrix, one of c("BLOSUM50", "BLOSUM62", "BLOSUM50_pca", "BLOSUM62_pca", "ONEHOT_enc")
-#' @param n_pcs The number of principle components used for encoding. Only relevant if mat is one of c("BLOSUM50_pca", "BLOSUM62_pca")
+#' @param mat An encoding matrix, one of c("BLOSUM50", "BLOSUM62",
+#'            "BLOSUM50_pca", "BLOSUM62_pca", "ONEHOT_enc")
+#' @param n_pcs The number of principle components used for encoding. Only
+#'              relevant if mat is one of c("BLOSUM50_pca", "BLOSUM62_pca")
+#' @param flatten A logical, if FALSE (default) the full tensor will be
+#'                returned, if TRUE tensor will be flattened, such that each row
+#'                is a peptide and each column an encoding value. In essence,
+#'                each peptide image is flattened to a vector by concatenating
+#'                the rows in the encoded matrix constituting the image.
+#'
 #' @return A 3D array (tensor) of peptide 'images' with dimensions
 #' number_of_peptides x length_peptides x length_encoding (20 aminoacids + X = 21)
 #'
@@ -23,34 +31,36 @@
 #'
 #' peps = pep_ran(k = 9, n = 10)
 #'
-#' X1 = pep_encode(peps, mat = "BLOSUM50")
+#' X1 = pep_encode2d(peps, mat = "BLOSUM50")
 #' dim(X1)
 #'
-#' X2 = pep_encode(peps, mat = "BLOSUM62")
+#' X2 = pep_encode2d(peps, mat = "BLOSUM62")
 #' dim(X2)
 #'
-#' X3 = pep_encode(peps, mat = "BLOSUM50_pca", n_pcs = 10)
+#' X3 = pep_encode2d(peps, mat = "BLOSUM50_pca", n_pcs = 10)
 #' dim(X3)
 #'
-#' X4 = pep_encode(peps, mat = "BLOSUM62_pca", n_pcs = 10)
+#' X4 = pep_encode2d(peps, mat = "BLOSUM62_pca", n_pcs = 10)
 #' dim(X4)
 #'
-#' X5 = pep_encode(peps, mat = "BLOSUM50_pca", n_pcs = 5)
+#' X5 = pep_encode2d(peps, mat = "BLOSUM50_pca", n_pcs = 5)
 #' dim(X5)
 #'
-#' X6 = pep_encode(peps, mat = "BLOSUM62_pca", n_pcs = 5)
+#' X6 = pep_encode2d(peps, mat = "BLOSUM62_pca", n_pcs = 5)
 #' dim(X6)
 #'
 #' custom_mat = round(matrix(data = rnorm(n = 441), nrow = 21, ncol = 21,
 #'                           dimnames = list(c(AMINOACIDS$one, 'X'), c(AMINOACIDS$one, 'X'))), 2)
-#' X7 = pep_encode(peps, mat = custom_mat)
+#' X7 = pep_encode2d(peps, mat = custom_mat)
 #' dim(X7)
 #'
 #' @export
-pep_encode <- function(x, mat, n_pcs = 10){
+pep_encode2d <- function(x, mat, n_pcs = 10, flatten = FALSE){
 
   # Allowed matrices
-  m_allowed <- c("BLOSUM50", "BLOSUM62", "BLOSUM50_pca", "BLOSUM62_pca")
+  m_allowed <- c("BLOSUM50", "BLOSUM62",
+                 "BLOSUM50_pca", "BLOSUM62_pca",
+                 "ONEHOT")
 
   # Check arguments
   if( is.character(mat) && !(mat %in% m_allowed)){
@@ -76,7 +86,7 @@ pep_encode <- function(x, mat, n_pcs = 10){
   if( !is.numeric(mat) && mat == "BLOSUM62" ){
     mat_enc <- peptools::BLOSUM62_enc
   }
-  if( !is.numeric(mat) && mat == "ONEHOT_enc" ){
+  if( !is.numeric(mat) && mat == "ONEHOT" ){
     mat_enc <- peptools::ONEHOT_enc
   }
   if( !is.numeric(mat) && mat == "BLOSUM50_pca" ){
@@ -113,10 +123,29 @@ pep_encode <- function(x, mat, n_pcs = 10){
   #     pep_m  |    \ encoding value l
   #
   o_tensor <- array(data = NA, dim = c(n_peps, l_peps, l_enc))
+  #o_tensor <- array(data = NA, dim = c(l_peps, l_enc, n_peps))
   for( i in 1:n_peps ){
     pep_i_residues <- pep_mat[i,]
     pep_img <- mat_enc[pep_i_residues,]
+    #o_tensor[,,i] <- pep_img
     o_tensor[i,,] <- pep_img
   }
+  # dimnames(o_tensor) <- list(paste0("p", 1:l_peps),
+  #                            colnames(mat_enc),
+  #                            x)
+  dimnames(o_tensor) <- list(x,
+                             paste0("p", 1:l_peps),
+                             colnames(mat_enc))
+
+  # Flatten?
+  # y = pep_encode2d("LSDGMSLL", BLOSUM62)
+  # t(apply(y, 1, function(x_k){ return( matrix(t(x_k), nrow = 1) ) }))
+  if( flatten ){
+    return(
+      t(apply(o_tensor, 1, function(x_k){ return( matrix(t(x_k), nrow = 1) ) }))
+    )
+  }
+
+  # Done, return
   return(o_tensor)
 }

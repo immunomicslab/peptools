@@ -3,14 +3,17 @@
 \docType{data}
 \name{PEPTIDES}
 \alias{PEPTIDES}
-\title{5,000 9-mer peptides}
+\title{An allele data set of random 9-mer peptides}
 \format{
-A character vector with 5,000 strings of length 9
+A data frame with 132,091 rows and 6 columns
 }
 \usage{
 PEPTIDES
 }
 \description{
-5,000 9-mer peptides predicted to be strong binders to HLA-A*02:01 by netMHCpan-4.0
+Each peptide has been in silico analysed for binding to six alleles:
+\code{HLA-A01:01}, \code{HLA-A02:01}, \code{HLA-A03:01},
+\code{HLA-B07:02}, \code{HLA-B08:01}, \code{HLA-B27:05}. Analysis was
+performed using netMHCpan4.1b.
 }
 \keyword{datasets}

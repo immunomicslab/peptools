@@ -3,6 +3,6 @@
 export(aa_translate)
 export(pep_check)
 export(pep_chop)
-export(pep_encode)
+export(pep_encode2d)
 export(pep_ran)
 export(pep_split)
